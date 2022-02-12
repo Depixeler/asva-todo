@@ -3,7 +3,6 @@ import React from "react";
 
 import { addTodo } from "../redux/todos/todoActions";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 import TodoList from "./TodoList";
 
 const TodoInput = () => {
