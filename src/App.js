@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import TodoInput from "./components/TodoInput";
+import { Provider } from "react-redux";
+import store from "./redux/store";
+import TodoList from "./components/TodoList";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import HomeScreen from "./components/HomeScreen";
+import ProtectedRoute from "./protectedRoutes/ProtectedRoute";
+import LoginScreen from "./components/LoginScreen";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <Router>
+        <div className="App">
+          <h1>Todo Components</h1>
+          <Routes>
+            <Route path="/" element={<HomeScreen />} />
+            <Route path="/login" element={<LoginScreen />} />
+            <Route element={<ProtectedRoute />}>
+              <Route path="/todoInput" element={<TodoInput />} />
+            </Route>
+            <Route path="/todo" element={<TodoList />} />
+          </Routes>
+        </div>
+      </Router>
+    </Provider>
   );
 }
 
