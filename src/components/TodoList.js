@@ -6,9 +6,6 @@ import { removeTodo } from "../redux/todos/todoActions";
 const TodoList = () => {
   const dispatch = useDispatch();
   const todoArr = useSelector((state) => state.todo.todoList);
-  {
-    console.log(todoArr);
-  }
   return (
     <div>
       <h1>Todo List is Here</h1>
